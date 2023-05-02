@@ -158,7 +158,7 @@ To easy no ?
 The only thing you need to know is that it is not working like that for boolean values (you can't set __type=bool__) 
 
 To use boolean : 
-```
+```pyhton
 parser.add_argument('--batch_norm', action="store_true",
                     help="Rather to use batch normalization or not") 
 ```
@@ -166,6 +166,16 @@ parser.add_argument('--batch_norm', action="store_true",
 And call with __--batch_norm__ to set it to True, otherwhile, it will be False : 
 ```
 python3 myscript.py path/2/folder --batch_size 16 --batch_norm
+```
+If you want to access, the args arguments for log them : 
+
+```python
+def log_args(args) :
+    logger = logging.getLogger(__name__)
+    logger.info("-"*30)
+    for k in args.__dict__:
+        logger.info(f"- {k} : {args.__dict__[k]}")
+    logger.info("-"*30)
 ```
 
 ### V. Dictionaries 
@@ -184,7 +194,7 @@ d2 = {'LastName':'Jones', 'Age':25}
 d1.update(d2) 
 print(d1) 
 ```
-```
+```console
 {'Name':'Jhon', LastName:'Jones', 'Age':'25'}
 ```
 Merging dicrionnaries (not in place method).
@@ -194,10 +204,34 @@ Do the same thing as update but without modifying d1.
 d3 = {**d1, **d2}
 print(d3)
 ```
-```
+```console
 {'Name':'Jhon', LastName:'Jones', 'Age':'25'}
 ```
 Note that you can pass more than 2 dictionnaries, and the order 
 (from left to right) define which values will be taken when keys are the same.
 
 ### VI. TensorBoard 
+
+```python
+from torch.utils.tensorboard import SummaryWriter
+# you can't do : 
+tb_writer = torch.utils.tensorboard.SummaryWriter() 
+```
+
+```python
+tb_writer = SummaryWriter('path/to/tb_logs')
+```
+Add Training and Validation loss :
+```python
+tb_writer.add_scalar('TrainingLoss', avg_training_loss, global_step=epoch_i) 
+tb_writer.add_scalar('ValidationLoss', avg_valid_loss, global_step=epoch_i) 
+```
+Add images, for example, the output of your model :
+```python
+tb_writer.add_image(f'ModelOutput/example_{i}', output, dataformat='CHW', global_step=epoch_i)
+tb_writer.add_image(f'Labels/label_{i}', label, dataformat='CHW', global_step=epoch_i)
+```
+Start tensorboard : 
+```
+python3 -m tensorboard.main --logdir path/to/tb_logs
+```
