@@ -132,7 +132,6 @@ parser = argparse.ArgumentParser(prog="Train ML model",
                                      description="Train my model")
 parser.add_argument("path_to_training_data",
                     type=str,
-                    default="./train",
                     help="path to the training data folder, by default, \
                         the data is expected to be organize like this : ... ")
 
@@ -143,7 +142,7 @@ parser.add_argument("--batch_size",
 args = parser.parse_args()
 ```
 First argument __path_to_training_data__ need to be provided, the second __batchsize__ is optional. 
-Every thing is on the __--__ before the argument name. 
+Argument with __--__ before will be optinal. 
 
 You will call your python srcipt : 
 ```
@@ -199,4 +198,6 @@ print(d3)
 {'Name':'Jhon', LastName:'Jones', 'Age':'25'}
 ```
 Note that you can pass more than 2 dictionnaries, and the order 
-(from left to right) define which values will be taken when keys are the same. 
+(from left to right) define which values will be taken when keys are the same.
+
+### VI. TensorBoard 
