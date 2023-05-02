@@ -65,15 +65,15 @@ INFO:name_of_file_in_where_we_log: ...
 ```
 ### II. Dealing with virtual environement 
 
-A really classical one i have to say, put as a pip user, so, not a conda user, i spent a lot of time 
-without using it. Beside all the good and necessary advantages that using virtual environement for all your projects
+A really classical one i have to say, but as a pip user, i spent a lot of time 
+without using virtual environnements. Beside all the good and necessary advantages that using virtual environement for all your projects
 provide, it also come this major drawbacks : 
   - You need to be a litle bit methodical (which i'm not) 
   - It's taking a looooot of space on your computeur, as every project will have their own site-package 
   with everythings installed in there. 
 
-Moreover, we are likeley to use always the same, eavy library like numpy, Pytorch ... 
-There are a lot of different way of dealing with python virtual environemment, virtualenv, conda, poetry ... 
+Moreover, we are likeley to use always the same, heavy libraries like Numpy, Pytorch ... 
+There are a lot of different way of dealing with python virtual environemments, venv, virtualenv, conda, poetry ... 
 
 The compromise i have found i to use __venv__, kind of the builtin way of doing it. 
 
