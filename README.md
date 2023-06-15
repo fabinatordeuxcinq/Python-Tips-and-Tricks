@@ -158,7 +158,7 @@ To easy no ?
 The only thing you need to know is that it is not working like that for boolean values (you can't set __type=bool__) 
 
 To use boolean : 
-```pyhton
+```python
 parser.add_argument('--batch_norm', action="store_true",
                     help="Rather to use batch normalization or not") 
 ```
@@ -167,7 +167,7 @@ And call with __--batch_norm__ to set it to True, otherwhile, it will be False :
 ```
 python3 myscript.py path/2/folder --batch_size 16 --batch_norm
 ```
-If you want to access, the args arguments for log them : 
+If you want to access, the args arguments to log them : 
 
 ```python
 def log_args(args) :
